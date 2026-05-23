@@ -334,8 +334,8 @@ class _PagdeescolhasdeperfisWidgetState
                         color: Color(0xFFA5A9A4),
                         size: 24.0,
                       ),
-                      onPressed: () {
-                        print('IconButton pressed ...');
+                      onPressed: () async {
+                        context.pushNamed(PagfornecedorWidget.routeName);
                       },
                     ),
                   ].divide(SizedBox(width: 12.0)),

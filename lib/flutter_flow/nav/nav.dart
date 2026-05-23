@@ -54,6 +54,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: PagartesaoWidget.routeName,
           path: PagartesaoWidget.routePath,
           builder: (context, params) => PagartesaoWidget(),
+        ),
+        FFRoute(
+          name: PagfornecedorWidget.routeName,
+          path: PagfornecedorWidget.routePath,
+          builder: (context, params) => PagfornecedorWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
