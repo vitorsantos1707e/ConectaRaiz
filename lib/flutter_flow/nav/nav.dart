@@ -49,6 +49,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: PagdeescolhasdeperfisWidget.routeName,
           path: PagdeescolhasdeperfisWidget.routePath,
           builder: (context, params) => PagdeescolhasdeperfisWidget(),
+        ),
+        FFRoute(
+          name: PagartesaoWidget.routeName,
+          path: PagartesaoWidget.routePath,
+          builder: (context, params) => PagartesaoWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
