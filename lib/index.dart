@@ -9,3 +9,4 @@ export '/etapa1gabriel/pagfornecedor/pagfornecedor_widget.dart'
 export '/etapa1gabriel/pagconsumidor/pagconsumidor_widget.dart'
     show PagconsumidorWidget;
 export '/homepage/homepage_widget.dart' show HomepageWidget;
+export '/pagproduto/pagproduto_widget.dart' show PagprodutoWidget;
