@@ -44,6 +44,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: TeladeboasvindasWidget.routeName,
           path: TeladeboasvindasWidget.routePath,
           builder: (context, params) => TeladeboasvindasWidget(),
+        ),
+        FFRoute(
+          name: PagdeescolhasdeperfisWidget.routeName,
+          path: PagdeescolhasdeperfisWidget.routePath,
+          builder: (context, params) => PagdeescolhasdeperfisWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
