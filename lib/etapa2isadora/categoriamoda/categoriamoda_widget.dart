@@ -65,8 +65,8 @@ class _CategoriamodaWidgetState extends State<CategoriamodaWidget> {
                       color: FlutterFlowTheme.of(context).info,
                       size: 18.0,
                     ),
-                    onPressed: () {
-                      print('IconButton pressed ...');
+                    onPressed: () async {
+                      context.safePop();
                     },
                   ),
                   Padding(
@@ -246,7 +246,7 @@ class _CategoriamodaWidgetState extends State<CategoriamodaWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
-                          context.pushNamed(CategoriamodaWidget.routeName);
+                          context.pushNamed(CategoriacrocheWidget.routeName);
                         },
                         child: Container(
                           width: 60.0,
@@ -413,19 +413,28 @@ class _CategoriamodaWidgetState extends State<CategoriamodaWidget> {
                       Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-                        child: Container(
-                          width: 60.0,
-                          height: 60.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: Image.asset(
-                                'assets/images/jarroplanta.png',
-                              ).image,
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed(CategoriadecoraoWidget.routeName);
+                          },
+                          child: Container(
+                            width: 60.0,
+                            height: 60.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: Image.asset(
+                                  'assets/images/jarroplanta.png',
+                                ).image,
+                              ),
+                              shape: BoxShape.circle,
                             ),
-                            shape: BoxShape.circle,
                           ),
                         ),
                       ),
