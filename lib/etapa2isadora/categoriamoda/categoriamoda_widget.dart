@@ -66,7 +66,7 @@ class _CategoriamodaWidgetState extends State<CategoriamodaWidget> {
                       size: 18.0,
                     ),
                     onPressed: () async {
-                      context.safePop();
+                      context.pushNamed(HomepageWidget.routeName);
                     },
                   ),
                   Padding(
