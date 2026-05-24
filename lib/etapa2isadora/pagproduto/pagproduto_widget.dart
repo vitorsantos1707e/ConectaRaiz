@@ -2,6 +2,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'pagproduto_model.dart';
@@ -126,55 +127,66 @@ class _PagprodutoWidgetState extends State<PagprodutoWidget> {
                             Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                Container(
-                                  width: 100.0,
-                                  height: 39.54,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xFFF4E7D5),
-                                    borderRadius: BorderRadius.circular(22.0),
-                                  ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Container(
-                                        width: 40.21,
-                                        height: 100.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          image: DecorationImage(
-                                            fit: BoxFit.cover,
-                                            image: Image.asset(
-                                              'assets/images/croch.png',
-                                            ).image,
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed(
+                                        CategoriacrocheWidget.routeName);
+                                  },
+                                  child: Container(
+                                    width: 100.0,
+                                    height: 39.54,
+                                    decoration: BoxDecoration(
+                                      color: Color(0xFFF4E7D5),
+                                      borderRadius: BorderRadius.circular(22.0),
+                                    ),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Container(
+                                          width: 40.21,
+                                          height: 100.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            image: DecorationImage(
+                                              fit: BoxFit.cover,
+                                              image: Image.asset(
+                                                'assets/images/croch.png',
+                                              ).image,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(24.0),
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(24.0),
                                         ),
-                                      ),
-                                      Text(
-                                        'Crochê',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              font: GoogleFonts.inter(
+                                        Text(
+                                          'Crochê',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                font: GoogleFonts.inter(
+                                                  fontWeight: FontWeight.w600,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
+                                                color: Color(0xFF6D4129),
+                                                fontSize: 12.0,
+                                                letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
                                                 fontStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF6D4129),
-                                              fontSize: 12.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.w600,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontStyle,
-                                            ),
-                                      ),
-                                    ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ],

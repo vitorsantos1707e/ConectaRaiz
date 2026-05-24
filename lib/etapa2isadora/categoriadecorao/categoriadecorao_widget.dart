@@ -1,31 +1,31 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'categoriaceramica_model.dart';
-export 'categoriaceramica_model.dart';
+import 'categoriadecorao_model.dart';
+export 'categoriadecorao_model.dart';
 
-class CategoriaceramicaWidget extends StatefulWidget {
-  const CategoriaceramicaWidget({super.key});
+class CategoriadecoraoWidget extends StatefulWidget {
+  const CategoriadecoraoWidget({super.key});
 
-  static String routeName = 'categoriaceramica';
-  static String routePath = '/categoriaceramica';
+  static String routeName = 'categoriadecorao';
+  static String routePath = '/categoriadecorao';
 
   @override
-  State<CategoriaceramicaWidget> createState() =>
-      _CategoriaceramicaWidgetState();
+  State<CategoriadecoraoWidget> createState() => _CategoriadecoraoWidgetState();
 }
 
-class _CategoriaceramicaWidgetState extends State<CategoriaceramicaWidget> {
-  late CategoriaceramicaModel _model;
+class _CategoriadecoraoWidgetState extends State<CategoriadecoraoWidget> {
+  late CategoriadecoraoModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => CategoriaceramicaModel());
+    _model = createModel(context, () => CategoriadecoraoModel());
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
@@ -65,8 +65,8 @@ class _CategoriaceramicaWidgetState extends State<CategoriaceramicaWidget> {
                       color: FlutterFlowTheme.of(context).info,
                       size: 18.0,
                     ),
-                    onPressed: () {
-                      print('IconButton pressed ...');
+                    onPressed: () async {
+                      context.safePop();
                     },
                   ),
                   Padding(
@@ -246,7 +246,7 @@ class _CategoriaceramicaWidgetState extends State<CategoriaceramicaWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
-                          context.pushNamed(CategoriaceramicaWidget.routeName);
+                          context.pushNamed(CategoriacrocheWidget.routeName);
                         },
                         child: Container(
                           width: 60.0,
@@ -294,7 +294,10 @@ class _CategoriaceramicaWidgetState extends State<CategoriaceramicaWidget> {
                           focusColor: Colors.transparent,
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
-                          onTap: () async {},
+                          onTap: () async {
+                            context
+                                .pushNamed(CategoriaceramicaWidget.routeName);
+                          },
                           child: Container(
                             width: 60.0,
                             height: 60.0,
@@ -308,9 +311,6 @@ class _CategoriaceramicaWidgetState extends State<CategoriaceramicaWidget> {
                                 ).image,
                               ),
                               shape: BoxShape.circle,
-                              border: Border.all(
-                                color: Color(0xFF6D4129),
-                              ),
                             ),
                           ),
                         ),
@@ -345,19 +345,28 @@ class _CategoriaceramicaWidgetState extends State<CategoriaceramicaWidget> {
                       Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-                        child: Container(
-                          width: 60.0,
-                          height: 60.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: Image.asset(
-                                'assets/images/camisa.png',
-                              ).image,
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed(CategoriamodaWidget.routeName);
+                          },
+                          child: Container(
+                            width: 60.0,
+                            height: 60.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: Image.asset(
+                                  'assets/images/camisa.png',
+                                ).image,
+                              ),
+                              shape: BoxShape.circle,
                             ),
-                            shape: BoxShape.circle,
                           ),
                         ),
                       ),
@@ -391,19 +400,31 @@ class _CategoriaceramicaWidgetState extends State<CategoriaceramicaWidget> {
                       Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-                        child: Container(
-                          width: 60.0,
-                          height: 60.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: Image.asset(
-                                'assets/images/jarroplanta.png',
-                              ).image,
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed(CategoriadecoraoWidget.routeName);
+                          },
+                          child: Container(
+                            width: 60.0,
+                            height: 60.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: Image.asset(
+                                  'assets/images/jarroplanta.png',
+                                ).image,
+                              ),
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: Color(0xFF6D4129),
+                              ),
                             ),
-                            shape: BoxShape.circle,
                           ),
                         ),
                       ),
@@ -456,7 +477,7 @@ class _CategoriaceramicaWidgetState extends State<CategoriaceramicaWidget> {
                           image: DecorationImage(
                             fit: BoxFit.cover,
                             image: Image.asset(
-                              'assets/images/bannerceramica.png',
+                              'assets/images/bannerdecorao.png',
                             ).image,
                           ),
                           shape: BoxShape.rectangle,
@@ -490,7 +511,7 @@ class _CategoriaceramicaWidgetState extends State<CategoriaceramicaWidget> {
                                   ),
                             ),
                             Text(
-                              'A cerâmica artesanal carrega história,\ncuidado e identidade. Cada peça é \nmoldada manualmente por artesãos,\nvalorizando a cultura e a produção feita\ncom afeto.',
+                              'Peças que transformam ambientes com\npersonalidade e significado. Ao escolher\num produto artesanal, você valoriza o \ntrabalho local e leva mais autenticidade\npara o seu lar.',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -580,7 +601,7 @@ class _CategoriaceramicaWidgetState extends State<CategoriaceramicaWidget> {
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(8.0),
                                 child: Image.asset(
-                                  'assets/images/xicaradeceramica.png',
+                                  'assets/images/painelmacrame.png',
                                   width: 200.0,
                                   height: 101.36,
                                   fit: BoxFit.cover,
@@ -590,7 +611,7 @@ class _CategoriaceramicaWidgetState extends State<CategoriaceramicaWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     5.0, 5.0, 0.0, 0.0),
                                 child: Text(
-                                  'Caneca de Cerâmica',
+                                  'Painel Macramê',
                                   textAlign: TextAlign.start,
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -615,7 +636,7 @@ class _CategoriaceramicaWidgetState extends State<CategoriaceramicaWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     5.0, 0.0, 0.0, 0.0),
                                 child: Text(
-                                  'R\$59,90',
+                                  'R\$89,90',
                                   textAlign: TextAlign.start,
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -707,7 +728,7 @@ class _CategoriaceramicaWidgetState extends State<CategoriaceramicaWidget> {
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(8.0),
                                   child: Image.asset(
-                                    'assets/images/vasoceramica.png',
+                                    'assets/images/vasoargila.png',
                                     width: 200.0,
                                     height: 101.4,
                                     fit: BoxFit.cover,
@@ -717,7 +738,7 @@ class _CategoriaceramicaWidgetState extends State<CategoriaceramicaWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       5.0, 5.0, 0.0, 0.0),
                                   child: Text(
-                                    'Vaso Decorativo',
+                                    'Vaso Decorativo de Argila',
                                     textAlign: TextAlign.start,
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
@@ -730,6 +751,7 @@ class _CategoriaceramicaWidgetState extends State<CategoriaceramicaWidget> {
                                                     .fontStyle,
                                           ),
                                           color: Color(0xFF324B20),
+                                          fontSize: 12.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
                                           fontStyle:
@@ -743,7 +765,7 @@ class _CategoriaceramicaWidgetState extends State<CategoriaceramicaWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       5.0, 0.0, 0.0, 0.0),
                                   child: Text(
-                                    'R\$69,90',
+                                    'R\$49,90',
                                     textAlign: TextAlign.start,
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
@@ -774,7 +796,7 @@ class _CategoriaceramicaWidgetState extends State<CategoriaceramicaWidget> {
                                       size: 24.0,
                                     ),
                                     Text(
-                                      '4.8 (64)',
+                                      '4.8 (84)',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -843,7 +865,7 @@ class _CategoriaceramicaWidgetState extends State<CategoriaceramicaWidget> {
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(8.0),
                                 child: Image.asset(
-                                  'assets/images/tijela.png',
+                                  'assets/images/cestodefibra.png',
                                   width: 200.0,
                                   height: 101.4,
                                   fit: BoxFit.cover,
@@ -853,7 +875,7 @@ class _CategoriaceramicaWidgetState extends State<CategoriaceramicaWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     5.0, 5.0, 0.0, 0.0),
                                 child: Text(
-                                  'Tigela de Cerâmica',
+                                  'Cesto de Fibra',
                                   textAlign: TextAlign.start,
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -878,7 +900,7 @@ class _CategoriaceramicaWidgetState extends State<CategoriaceramicaWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     5.0, 0.0, 0.0, 0.0),
                                 child: Text(
-                                  'R\$79,90',
+                                  'R\$69,90',
                                   textAlign: TextAlign.start,
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -908,7 +930,7 @@ class _CategoriaceramicaWidgetState extends State<CategoriaceramicaWidget> {
                                     size: 24.0,
                                   ),
                                   Text(
-                                    '4.7 (86)',
+                                    '4.5 (78)',
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -970,7 +992,7 @@ class _CategoriaceramicaWidgetState extends State<CategoriaceramicaWidget> {
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(8.0),
                                   child: Image.asset(
-                                    'assets/images/pratoceramica.png',
+                                    'assets/images/almofadabordada.png',
                                     width: 200.0,
                                     height: 101.4,
                                     fit: BoxFit.cover,
@@ -980,7 +1002,7 @@ class _CategoriaceramicaWidgetState extends State<CategoriaceramicaWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       5.0, 5.0, 0.0, 0.0),
                                   child: Text(
-                                    'Prato de Cerâmica',
+                                    'Capa de Almofada Bordada',
                                     textAlign: TextAlign.start,
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
@@ -993,6 +1015,7 @@ class _CategoriaceramicaWidgetState extends State<CategoriaceramicaWidget> {
                                                     .fontStyle,
                                           ),
                                           color: Color(0xFF324B20),
+                                          fontSize: 12.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
                                           fontStyle:
@@ -1006,7 +1029,7 @@ class _CategoriaceramicaWidgetState extends State<CategoriaceramicaWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       5.0, 0.0, 0.0, 0.0),
                                   child: Text(
-                                    'R\$89,90',
+                                    'R\$59,90',
                                     textAlign: TextAlign.start,
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
@@ -1037,7 +1060,7 @@ class _CategoriaceramicaWidgetState extends State<CategoriaceramicaWidget> {
                                       size: 24.0,
                                     ),
                                     Text(
-                                      '4.8 (93)',
+                                      '4.6 (53)',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(

@@ -94,6 +94,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: CategoriadecoraoWidget.routeName,
           path: CategoriadecoraoWidget.routePath,
           builder: (context, params) => CategoriadecoraoWidget(),
+        ),
+        FFRoute(
+          name: PagmensagensWidget.routeName,
+          path: PagmensagensWidget.routePath,
+          builder: (context, params) => PagmensagensWidget(),
+        ),
+        FFRoute(
+          name: PagmensagensartesaoWidget.routeName,
+          path: PagmensagensartesaoWidget.routePath,
+          builder: (context, params) => PagmensagensartesaoWidget(),
+        ),
+        FFRoute(
+          name: PagmensagensfornecedoresWidget.routeName,
+          path: PagmensagensfornecedoresWidget.routePath,
+          builder: (context, params) => PagmensagensfornecedoresWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

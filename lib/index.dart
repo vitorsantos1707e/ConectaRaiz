@@ -8,12 +8,18 @@ export '/etapa1gabriel/pagfornecedor/pagfornecedor_widget.dart'
     show PagfornecedorWidget;
 export '/etapa1gabriel/pagconsumidor/pagconsumidor_widget.dart'
     show PagconsumidorWidget;
-export '/homepage/homepage_widget.dart' show HomepageWidget;
-export '/pagproduto/pagproduto_widget.dart' show PagprodutoWidget;
-export '/categoriacroche/categoriacroche_widget.dart'
+export '/etapa2isadora/homepage/homepage_widget.dart' show HomepageWidget;
+export '/etapa2isadora/pagproduto/pagproduto_widget.dart' show PagprodutoWidget;
+export '/etapa2isadora/categoriacroche/categoriacroche_widget.dart'
     show CategoriacrocheWidget;
-export '/categoriaceramica/categoriaceramica_widget.dart'
+export '/etapa2isadora/categoriaceramica/categoriaceramica_widget.dart'
     show CategoriaceramicaWidget;
-export '/categoriamoda/categoriamoda_widget.dart' show CategoriamodaWidget;
-export '/categoriadecorao/categoriadecorao_widget.dart'
+export '/etapa2isadora/categoriamoda/categoriamoda_widget.dart'
+    show CategoriamodaWidget;
+export '/etapa2isadora/categoriadecorao/categoriadecorao_widget.dart'
     show CategoriadecoraoWidget;
+export '/pagmensagens/pagmensagens_widget.dart' show PagmensagensWidget;
+export '/pagmensagensartesao/pagmensagensartesao_widget.dart'
+    show PagmensagensartesaoWidget;
+export '/pagmensagensfornecedores/pagmensagensfornecedores_widget.dart'
+    show PagmensagensfornecedoresWidget;
