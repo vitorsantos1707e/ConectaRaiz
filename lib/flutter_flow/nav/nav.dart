@@ -89,6 +89,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: CategoriamodaWidget.routeName,
           path: CategoriamodaWidget.routePath,
           builder: (context, params) => CategoriamodaWidget(),
+        ),
+        FFRoute(
+          name: CategoriadecoraoWidget.routeName,
+          path: CategoriadecoraoWidget.routePath,
+          builder: (context, params) => CategoriadecoraoWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

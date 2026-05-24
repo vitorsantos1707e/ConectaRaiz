@@ -15,3 +15,5 @@ export '/categoriacroche/categoriacroche_widget.dart'
 export '/categoriaceramica/categoriaceramica_widget.dart'
     show CategoriaceramicaWidget;
 export '/categoriamoda/categoriamoda_widget.dart' show CategoriamodaWidget;
+export '/categoriadecorao/categoriadecorao_widget.dart'
+    show CategoriadecoraoWidget;
