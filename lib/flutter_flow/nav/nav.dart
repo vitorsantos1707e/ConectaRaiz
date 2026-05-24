@@ -79,6 +79,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: CategoriacrocheWidget.routeName,
           path: CategoriacrocheWidget.routePath,
           builder: (context, params) => CategoriacrocheWidget(),
+        ),
+        FFRoute(
+          name: CategoriaceramicaWidget.routeName,
+          path: CategoriaceramicaWidget.routePath,
+          builder: (context, params) => CategoriaceramicaWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
