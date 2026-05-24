@@ -10,3 +10,5 @@ export '/etapa1gabriel/pagconsumidor/pagconsumidor_widget.dart'
     show PagconsumidorWidget;
 export '/homepage/homepage_widget.dart' show HomepageWidget;
 export '/pagproduto/pagproduto_widget.dart' show PagprodutoWidget;
+export '/categoriacroche/categoriacroche_widget.dart'
+    show CategoriacrocheWidget;

@@ -332,8 +332,8 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                         ),
                   ),
                   FFButtonWidget(
-                    onPressed: () {
-                      print('Button pressed ...');
+                    onPressed: () async {
+                      context.pushNamed(CategoriacrocheWidget.routeName);
                     },
                     text: 'Ver mais',
                     options: FFButtonOptions(
@@ -375,19 +375,28 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                   Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Container(
-                        width: 70.0,
-                        height: 70.0,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: Image.asset(
-                              'assets/images/croch.png',
-                            ).image,
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.pushNamed(CategoriacrocheWidget.routeName);
+                        },
+                        child: Container(
+                          width: 70.0,
+                          height: 70.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: Image.asset(
+                                'assets/images/croch.png',
+                              ).image,
+                            ),
+                            shape: BoxShape.circle,
                           ),
-                          shape: BoxShape.circle,
                         ),
                       ),
                       Text(

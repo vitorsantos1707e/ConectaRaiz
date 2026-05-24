@@ -74,6 +74,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: PagprodutoWidget.routeName,
           path: PagprodutoWidget.routePath,
           builder: (context, params) => PagprodutoWidget(),
+        ),
+        FFRoute(
+          name: CategoriacrocheWidget.routeName,
+          path: CategoriacrocheWidget.routePath,
+          builder: (context, params) => CategoriacrocheWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
