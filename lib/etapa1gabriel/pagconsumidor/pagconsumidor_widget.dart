@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -6,6 +7,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'pagconsumidor_model.dart';
 export 'pagconsumidor_model.dart';
@@ -30,19 +32,46 @@ class _PagconsumidorWidgetState extends State<PagconsumidorWidget> {
     super.initState();
     _model = createModel(context, () => PagconsumidorModel());
 
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      GoRouter.of(context).prepareAuthEvent();
+      if (_model.passwordTextController.text !=
+          _model.confirmPasswordTextController.text) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'Passwords don\'t match!',
+            ),
+          ),
+        );
+        return;
+      }
+
+      final user = await authManager.createAccountWithEmail(
+        context,
+        _model.emailTextController.text,
+        _model.passwordTextController.text,
+      );
+      if (user == null) {
+        return;
+      }
+
+      context.goNamedAuth(HomepageWidget.routeName, context.mounted);
+    });
+
     _model.textController1 ??= TextEditingController();
     _model.textFieldFocusNode1 ??= FocusNode();
 
-    _model.textController2 ??= TextEditingController();
+    _model.emailTextController ??= TextEditingController();
     _model.textFieldFocusNode2 ??= FocusNode();
 
-    _model.textController3 ??= TextEditingController();
+    _model.passwordTextController ??= TextEditingController();
     _model.textFieldFocusNode3 ??= FocusNode();
 
-    _model.textController4 ??= TextEditingController();
+    _model.confirmPasswordTextController ??= TextEditingController();
     _model.textFieldFocusNode4 ??= FocusNode();
 
-    _model.textController5 ??= TextEditingController();
+    _model.textController3 ??= TextEditingController();
     _model.textFieldFocusNode5 ??= FocusNode();
   }
 
@@ -334,8 +363,38 @@ class _PagconsumidorWidgetState extends State<PagconsumidorWidget> {
                               child: Container(
                                 width: 200.0,
                                 child: TextFormField(
-                                  controller: _model.textController2,
+                                  controller: _model.emailTextController,
                                   focusNode: _model.textFieldFocusNode2,
+                                  onFieldSubmitted: (_) async {
+                                    GoRouter.of(context).prepareAuthEvent();
+                                    if (_model.passwordTextController.text !=
+                                        _model.confirmPasswordTextController
+                                            .text) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            'Passwords don\'t match!',
+                                          ),
+                                        ),
+                                      );
+                                      return;
+                                    }
+
+                                    final user = await authManager
+                                        .createAccountWithEmail(
+                                      context,
+                                      _model.emailTextController.text,
+                                      _model.passwordTextController.text,
+                                    );
+                                    if (user == null) {
+                                      return;
+                                    }
+
+                                    context.goNamedAuth(
+                                        HomepageWidget.routeName,
+                                        context.mounted);
+                                  },
                                   autofocus: false,
                                   enabled: true,
                                   obscureText: false,
@@ -448,7 +507,7 @@ class _PagconsumidorWidgetState extends State<PagconsumidorWidget> {
                                   cursorColor:
                                       FlutterFlowTheme.of(context).primaryText,
                                   enableInteractiveSelection: true,
-                                  validator: _model.textController2Validator
+                                  validator: _model.emailTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -464,7 +523,7 @@ class _PagconsumidorWidgetState extends State<PagconsumidorWidget> {
                               child: Container(
                                 width: 200.0,
                                 child: TextFormField(
-                                  controller: _model.textController3,
+                                  controller: _model.passwordTextController,
                                   focusNode: _model.textFieldFocusNode3,
                                   autofocus: false,
                                   enabled: true,
@@ -592,7 +651,8 @@ class _PagconsumidorWidgetState extends State<PagconsumidorWidget> {
                                   cursorColor:
                                       FlutterFlowTheme.of(context).primaryText,
                                   enableInteractiveSelection: true,
-                                  validator: _model.textController3Validator
+                                  validator: _model
+                                      .passwordTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -608,7 +668,8 @@ class _PagconsumidorWidgetState extends State<PagconsumidorWidget> {
                               child: Container(
                                 width: 200.0,
                                 child: TextFormField(
-                                  controller: _model.textController4,
+                                  controller:
+                                      _model.confirmPasswordTextController,
                                   focusNode: _model.textFieldFocusNode4,
                                   autofocus: false,
                                   enabled: true,
@@ -736,7 +797,8 @@ class _PagconsumidorWidgetState extends State<PagconsumidorWidget> {
                                   cursorColor:
                                       FlutterFlowTheme.of(context).primaryText,
                                   enableInteractiveSelection: true,
-                                  validator: _model.textController4Validator
+                                  validator: _model
+                                      .confirmPasswordTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -778,7 +840,7 @@ class _PagconsumidorWidgetState extends State<PagconsumidorWidget> {
                         Container(
                           width: 328.0,
                           child: TextFormField(
-                            controller: _model.textController5,
+                            controller: _model.textController3,
                             focusNode: _model.textFieldFocusNode5,
                             autofocus: false,
                             enabled: true,
@@ -882,7 +944,7 @@ class _PagconsumidorWidgetState extends State<PagconsumidorWidget> {
                             cursorColor:
                                 FlutterFlowTheme.of(context).primaryText,
                             enableInteractiveSelection: true,
-                            validator: _model.textController5Validator
+                            validator: _model.textController3Validator
                                 .asValidator(context),
                           ),
                         ),

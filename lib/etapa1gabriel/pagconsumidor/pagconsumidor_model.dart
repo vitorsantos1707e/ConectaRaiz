@@ -13,22 +13,23 @@ class PagconsumidorModel extends FlutterFlowModel<PagconsumidorWidget> {
   String? Function(BuildContext, String?)? textController1Validator;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode2;
-  TextEditingController? textController2;
-  String? Function(BuildContext, String?)? textController2Validator;
+  TextEditingController? emailTextController;
+  String? Function(BuildContext, String?)? emailTextControllerValidator;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode3;
-  TextEditingController? textController3;
+  TextEditingController? passwordTextController;
   late bool passwordVisibility1;
-  String? Function(BuildContext, String?)? textController3Validator;
+  String? Function(BuildContext, String?)? passwordTextControllerValidator;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode4;
-  TextEditingController? textController4;
+  TextEditingController? confirmPasswordTextController;
   late bool passwordVisibility2;
-  String? Function(BuildContext, String?)? textController4Validator;
+  String? Function(BuildContext, String?)?
+      confirmPasswordTextControllerValidator;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode5;
-  TextEditingController? textController5;
-  String? Function(BuildContext, String?)? textController5Validator;
+  TextEditingController? textController3;
+  String? Function(BuildContext, String?)? textController3Validator;
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
@@ -45,15 +46,15 @@ class PagconsumidorModel extends FlutterFlowModel<PagconsumidorWidget> {
     textController1?.dispose();
 
     textFieldFocusNode2?.dispose();
-    textController2?.dispose();
+    emailTextController?.dispose();
 
     textFieldFocusNode3?.dispose();
-    textController3?.dispose();
+    passwordTextController?.dispose();
 
     textFieldFocusNode4?.dispose();
-    textController4?.dispose();
+    confirmPasswordTextController?.dispose();
 
     textFieldFocusNode5?.dispose();
-    textController5?.dispose();
+    textController3?.dispose();
   }
 }

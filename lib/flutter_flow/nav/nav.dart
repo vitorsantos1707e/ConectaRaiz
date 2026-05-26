@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
+import '/main.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
@@ -75,15 +76,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
-      errorBuilder: (context, state) => appStateNotifier.loggedIn
-          ? HomepageWidget()
-          : TeladeboasvindasWidget(),
+      errorBuilder: (context, state) =>
+          appStateNotifier.loggedIn ? NavBarPage() : TeladeboasvindasWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? HomepageWidget()
+              ? NavBarPage()
               : TeladeboasvindasWidget(),
         ),
         FFRoute(
@@ -114,17 +114,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: HomepageWidget.routeName,
           path: HomepageWidget.routePath,
-          builder: (context, params) => HomepageWidget(),
-        ),
-        FFRoute(
-          name: PagprodutoWidget.routeName,
-          path: PagprodutoWidget.routePath,
-          builder: (context, params) => PagprodutoWidget(),
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'homepage')
+              : HomepageWidget(),
         ),
         FFRoute(
           name: CategoriacrocheWidget.routeName,
           path: CategoriacrocheWidget.routePath,
-          builder: (context, params) => CategoriacrocheWidget(),
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'categoriacroche')
+              : CategoriacrocheWidget(),
         ),
         FFRoute(
           name: CategoriaceramicaWidget.routeName,
@@ -144,7 +143,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: PagmensagensWidget.routeName,
           path: PagmensagensWidget.routePath,
-          builder: (context, params) => PagmensagensWidget(),
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'pagmensagens')
+              : PagmensagensWidget(),
         ),
         FFRoute(
           name: PagmensagensartesaoWidget.routeName,
@@ -155,6 +156,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: PagmensagensfornecedoresWidget.routeName,
           path: PagmensagensfornecedoresWidget.routePath,
           builder: (context, params) => PagmensagensfornecedoresWidget(),
+        ),
+        FFRoute(
+          name: PageprodutoWidget.routeName,
+          path: PageprodutoWidget.routePath,
+          builder: (context, params) => PageprodutoWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -273,6 +279,7 @@ class FFParameters {
     String paramName,
     ParamType type, {
     bool isList = false,
+    List<String>? collectionNamePath,
   }) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
@@ -290,6 +297,7 @@ class FFParameters {
       param,
       type,
       isList,
+      collectionNamePath: collectionNamePath,
     );
   }
 }
