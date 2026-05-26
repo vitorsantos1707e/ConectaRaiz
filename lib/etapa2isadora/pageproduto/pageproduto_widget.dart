@@ -889,8 +889,9 @@ class _PageprodutoWidgetState extends State<PageprodutoWidget> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             FFButtonWidget(
-                              onPressed: () {
-                                print('Button pressed ...');
+                              onPressed: () async {
+                                context.pushNamed(
+                                    PagperfilartesaoWidget.routeName);
                               },
                               text: 'Ver perfil',
                               options: FFButtonOptions(

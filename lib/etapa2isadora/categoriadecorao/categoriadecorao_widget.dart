@@ -61,7 +61,7 @@ class _CategoriadecoraoWidgetState extends State<CategoriadecoraoWidget> {
                     size: 18.0,
                   ),
                   onPressed: () async {
-                    context.safePop();
+                    context.pushNamed(HomepageWidget.routeName);
                   },
                 ),
                 Padding(

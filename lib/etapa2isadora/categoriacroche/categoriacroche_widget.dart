@@ -66,7 +66,7 @@ class _CategoriacrocheWidgetState extends State<CategoriacrocheWidget> {
                       size: 18.0,
                     ),
                     onPressed: () async {
-                      context.safePop();
+                      context.pushNamed(HomepageWidget.routeName);
                     },
                   ),
                   Padding(
