@@ -161,6 +161,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: PageprodutoWidget.routeName,
           path: PageprodutoWidget.routePath,
           builder: (context, params) => PageprodutoWidget(),
+        ),
+        FFRoute(
+          name: PagperfilartesaoWidget.routeName,
+          path: PagperfilartesaoWidget.routePath,
+          builder: (context, params) => PagperfilartesaoWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

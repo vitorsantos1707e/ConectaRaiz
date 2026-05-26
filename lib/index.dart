@@ -25,3 +25,5 @@ export '/etapa3alex/pagmensagensfornecedores/pagmensagensfornecedores_widget.dar
     show PagmensagensfornecedoresWidget;
 export '/etapa2isadora/pageproduto/pageproduto_widget.dart'
     show PageprodutoWidget;
+export '/pagperfilartesao/pagperfilartesao_widget.dart'
+    show PagperfilartesaoWidget;
