@@ -1,3 +1,5 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -33,19 +35,19 @@ class _PagfornecedorWidgetState extends State<PagfornecedorWidget> {
     _model.textController1 ??= TextEditingController();
     _model.textFieldFocusNode1 ??= FocusNode();
 
-    _model.textController2 ??= TextEditingController();
+    _model.emailTextController ??= TextEditingController();
     _model.textFieldFocusNode2 ??= FocusNode();
 
-    _model.textController3 ??= TextEditingController();
+    _model.passwordTextController ??= TextEditingController();
     _model.textFieldFocusNode3 ??= FocusNode();
 
-    _model.textController4 ??= TextEditingController();
+    _model.confirmPasswordTextController ??= TextEditingController();
     _model.textFieldFocusNode4 ??= FocusNode();
 
-    _model.textController5 ??= TextEditingController();
+    _model.textController3 ??= TextEditingController();
     _model.textFieldFocusNode5 ??= FocusNode();
 
-    _model.textController6 ??= TextEditingController();
+    _model.textController4 ??= TextEditingController();
     _model.textFieldFocusNode6 ??= FocusNode();
   }
 
@@ -337,7 +339,7 @@ class _PagfornecedorWidgetState extends State<PagfornecedorWidget> {
                               child: Container(
                                 width: 200.0,
                                 child: TextFormField(
-                                  controller: _model.textController2,
+                                  controller: _model.emailTextController,
                                   focusNode: _model.textFieldFocusNode2,
                                   autofocus: false,
                                   enabled: true,
@@ -451,7 +453,7 @@ class _PagfornecedorWidgetState extends State<PagfornecedorWidget> {
                                   cursorColor:
                                       FlutterFlowTheme.of(context).primaryText,
                                   enableInteractiveSelection: true,
-                                  validator: _model.textController2Validator
+                                  validator: _model.emailTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -467,7 +469,7 @@ class _PagfornecedorWidgetState extends State<PagfornecedorWidget> {
                               child: Container(
                                 width: 200.0,
                                 child: TextFormField(
-                                  controller: _model.textController3,
+                                  controller: _model.passwordTextController,
                                   focusNode: _model.textFieldFocusNode3,
                                   autofocus: false,
                                   enabled: true,
@@ -595,7 +597,8 @@ class _PagfornecedorWidgetState extends State<PagfornecedorWidget> {
                                   cursorColor:
                                       FlutterFlowTheme.of(context).primaryText,
                                   enableInteractiveSelection: true,
-                                  validator: _model.textController3Validator
+                                  validator: _model
+                                      .passwordTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -611,7 +614,8 @@ class _PagfornecedorWidgetState extends State<PagfornecedorWidget> {
                               child: Container(
                                 width: 200.0,
                                 child: TextFormField(
-                                  controller: _model.textController4,
+                                  controller:
+                                      _model.confirmPasswordTextController,
                                   focusNode: _model.textFieldFocusNode4,
                                   autofocus: false,
                                   enabled: true,
@@ -739,7 +743,8 @@ class _PagfornecedorWidgetState extends State<PagfornecedorWidget> {
                                   cursorColor:
                                       FlutterFlowTheme.of(context).primaryText,
                                   enableInteractiveSelection: true,
-                                  validator: _model.textController4Validator
+                                  validator: _model
+                                      .confirmPasswordTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -781,7 +786,7 @@ class _PagfornecedorWidgetState extends State<PagfornecedorWidget> {
                         Container(
                           width: 328.0,
                           child: TextFormField(
-                            controller: _model.textController5,
+                            controller: _model.textController3,
                             focusNode: _model.textFieldFocusNode5,
                             autofocus: false,
                             enabled: true,
@@ -885,14 +890,14 @@ class _PagfornecedorWidgetState extends State<PagfornecedorWidget> {
                             cursorColor:
                                 FlutterFlowTheme.of(context).primaryText,
                             enableInteractiveSelection: true,
-                            validator: _model.textController5Validator
+                            validator: _model.textController3Validator
                                 .asValidator(context),
                           ),
                         ),
                         Container(
                           width: 328.0,
                           child: TextFormField(
-                            controller: _model.textController6,
+                            controller: _model.textController4,
                             focusNode: _model.textFieldFocusNode6,
                             autofocus: false,
                             enabled: true,
@@ -996,7 +1001,7 @@ class _PagfornecedorWidgetState extends State<PagfornecedorWidget> {
                             cursorColor:
                                 FlutterFlowTheme.of(context).primaryText,
                             enableInteractiveSelection: true,
-                            validator: _model.textController6Validator
+                            validator: _model.textController4Validator
                                 .asValidator(context),
                           ),
                         ),
@@ -1053,7 +1058,44 @@ class _PagfornecedorWidgetState extends State<PagfornecedorWidget> {
                         ),
                         FFButtonWidget(
                           onPressed: () async {
-                            context.pushNamed(HomepageWidget.routeName);
+                            GoRouter.of(context).prepareAuthEvent();
+                            if (_model.passwordTextController.text !=
+                                _model.confirmPasswordTextController.text) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'Passwords don\'t match!',
+                                  ),
+                                ),
+                              );
+                              return;
+                            }
+
+                            final user =
+                                await authManager.createAccountWithEmail(
+                              context,
+                              _model.emailTextController.text,
+                              _model.passwordTextController.text,
+                            );
+                            if (user == null) {
+                              return;
+                            }
+
+                            await UsersRecord.collection.doc(user.uid).update({
+                              ...createUsersRecordData(
+                                name: _model.textController1.text,
+                                email: _model.emailTextController.text,
+                                userType: 'fornecedor',
+                              ),
+                              ...mapToFirestore(
+                                {
+                                  'createdAt': FieldValue.serverTimestamp(),
+                                },
+                              ),
+                            });
+
+                            context.goNamedAuth(
+                                HomepageWidget.routeName, context.mounted);
                           },
                           text: 'Criar Conta',
                           options: FFButtonOptions(

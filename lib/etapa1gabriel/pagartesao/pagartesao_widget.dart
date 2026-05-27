@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -55,6 +56,19 @@ class _PagartesaoWidgetState extends State<PagartesaoWidget> {
       if (user == null) {
         return;
       }
+
+      await UsersRecord.collection.doc(user.uid).update({
+        ...createUsersRecordData(
+          name: _model.textController1.text,
+          email: _model.emailTextController.text,
+          userType: 'fornecedor',
+        ),
+        ...mapToFirestore(
+          {
+            'createdAt': FieldValue.serverTimestamp(),
+          },
+        ),
+      });
 
       context.goNamedAuth(HomepageWidget.routeName, context.mounted);
     });
@@ -1085,7 +1099,44 @@ class _PagartesaoWidgetState extends State<PagartesaoWidget> {
                         ),
                         FFButtonWidget(
                           onPressed: () async {
-                            context.pushNamed(HomepageWidget.routeName);
+                            GoRouter.of(context).prepareAuthEvent();
+                            if (_model.passwordTextController.text !=
+                                _model.confirmPasswordTextController.text) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'Passwords don\'t match!',
+                                  ),
+                                ),
+                              );
+                              return;
+                            }
+
+                            final user =
+                                await authManager.createAccountWithEmail(
+                              context,
+                              _model.emailTextController.text,
+                              _model.passwordTextController.text,
+                            );
+                            if (user == null) {
+                              return;
+                            }
+
+                            await UsersRecord.collection.doc(user.uid).update({
+                              ...createUsersRecordData(
+                                name: _model.textController1.text,
+                                email: _model.emailTextController.text,
+                                userType: 'fornecedor',
+                              ),
+                              ...mapToFirestore(
+                                {
+                                  'createdAt': FieldValue.serverTimestamp(),
+                                },
+                              ),
+                            });
+
+                            context.goNamedAuth(
+                                HomepageWidget.routeName, context.mounted);
                           },
                           text: 'Criar Conta',
                           options: FFButtonOptions(
