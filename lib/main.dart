@@ -141,6 +141,7 @@ class _NavBarPageState extends State<NavBarPage> {
       'homepage': HomepageWidget(),
       'categoriacroche': CategoriacrocheWidget(),
       'pagmensagens': PagmensagensWidget(),
+      'pagefavoritos': PagefavoritosWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -179,6 +180,14 @@ class _NavBarPageState extends State<NavBarPage> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.message,
+              size: 24.0,
+            ),
+            label: 'Home',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.favorite,
               size: 24.0,
             ),
             label: 'Home',

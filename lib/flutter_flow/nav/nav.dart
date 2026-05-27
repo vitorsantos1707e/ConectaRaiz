@@ -171,6 +171,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: PagechatWidget.routeName,
           path: PagechatWidget.routePath,
           builder: (context, params) => PagechatWidget(),
+        ),
+        FFRoute(
+          name: PagefavoritosWidget.routeName,
+          path: PagefavoritosWidget.routePath,
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'pagefavoritos')
+              : PagefavoritosWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

@@ -28,3 +28,4 @@ export '/etapa2isadora/pageproduto/pageproduto_widget.dart'
 export '/pagperfilartesao/pagperfilartesao_widget.dart'
     show PagperfilartesaoWidget;
 export '/pagechat/pagechat_widget.dart' show PagechatWidget;
+export '/pagefavoritos/pagefavoritos_widget.dart' show PagefavoritosWidget;
