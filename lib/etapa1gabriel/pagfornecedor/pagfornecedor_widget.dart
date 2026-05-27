@@ -1084,17 +1084,17 @@ class _PagfornecedorWidgetState extends State<PagfornecedorWidget> {
                             await UsersRecord.collection.doc(user.uid).update({
                               ...createUsersRecordData(
                                 email: _model.emailTextController.text,
+                                displayName: _model.textController1.text,
                                 userType: 'fornecedor',
-                                name: _model.textController1.text,
                               ),
                               ...mapToFirestore(
                                 {
-                                  'createdAt': FieldValue.serverTimestamp(),
+                                  'created_time': FieldValue.serverTimestamp(),
                                 },
                               ),
                             });
 
-                            context.goNamedAuth(
+                            context.pushNamedAuth(
                                 HomepageWidget.routeName, context.mounted);
                           },
                           text: 'Criar Conta',

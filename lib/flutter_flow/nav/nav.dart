@@ -178,6 +178,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'pagefavoritos')
               : PagefavoritosWidget(),
+        ),
+        FFRoute(
+          name: PageperfilWidget.routeName,
+          path: PageperfilWidget.routePath,
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'pageperfil')
+              : PageperfilWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

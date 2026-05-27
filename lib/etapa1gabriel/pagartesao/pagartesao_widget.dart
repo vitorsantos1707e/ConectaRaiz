@@ -8,7 +8,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'pagartesao_model.dart';
 export 'pagartesao_model.dart';
@@ -32,46 +31,6 @@ class _PagartesaoWidgetState extends State<PagartesaoWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PagartesaoModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      GoRouter.of(context).prepareAuthEvent();
-      if (_model.passwordTextController.text !=
-          _model.confirmPasswordTextController.text) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              'Passwords don\'t match!',
-            ),
-          ),
-        );
-        return;
-      }
-
-      final user = await authManager.createAccountWithEmail(
-        context,
-        _model.emailTextController.text,
-        _model.passwordTextController.text,
-      );
-      if (user == null) {
-        return;
-      }
-
-      await UsersRecord.collection.doc(user.uid).update({
-        ...createUsersRecordData(
-          email: _model.emailTextController.text,
-          userType: 'fornecedor',
-          name: _model.textController1.text,
-        ),
-        ...mapToFirestore(
-          {
-            'createdAt': FieldValue.serverTimestamp(),
-          },
-        ),
-      });
-
-      context.goNamedAuth(HomepageWidget.routeName, context.mounted);
-    });
 
     _model.textController1 ??= TextEditingController();
     _model.textFieldFocusNode1 ??= FocusNode();
@@ -1125,17 +1084,17 @@ class _PagartesaoWidgetState extends State<PagartesaoWidget> {
                             await UsersRecord.collection.doc(user.uid).update({
                               ...createUsersRecordData(
                                 email: _model.emailTextController.text,
+                                displayName: _model.textController1.text,
                                 userType: 'fornecedor',
-                                name: _model.textController1.text,
                               ),
                               ...mapToFirestore(
                                 {
-                                  'createdAt': FieldValue.serverTimestamp(),
+                                  'created_time': FieldValue.serverTimestamp(),
                                 },
                               ),
                             });
 
-                            context.goNamedAuth(
+                            context.pushNamedAuth(
                                 HomepageWidget.routeName, context.mounted);
                           },
                           text: 'Criar Conta',

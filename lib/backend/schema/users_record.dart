@@ -15,20 +15,50 @@ class UsersRecord extends FirestoreRecord {
     _initializeFields();
   }
 
-  // "createdAt" field.
-  DateTime? _createdAt;
-  DateTime? get createdAt => _createdAt;
-  bool hasCreatedAt() => _createdAt != null;
-
   // "email" field.
   String? _email;
   String get email => _email ?? '';
   bool hasEmail() => _email != null;
 
-  // "name" field.
-  String? _name;
-  String get name => _name ?? '';
-  bool hasName() => _name != null;
+  // "display_name" field.
+  String? _displayName;
+  String get displayName => _displayName ?? '';
+  bool hasDisplayName() => _displayName != null;
+
+  // "photo_url" field.
+  String? _photoUrl;
+  String get photoUrl => _photoUrl ?? '';
+  bool hasPhotoUrl() => _photoUrl != null;
+
+  // "uid" field.
+  String? _uid;
+  String get uid => _uid ?? '';
+  bool hasUid() => _uid != null;
+
+  // "created_time" field.
+  DateTime? _createdTime;
+  DateTime? get createdTime => _createdTime;
+  bool hasCreatedTime() => _createdTime != null;
+
+  // "phone_number" field.
+  String? _phoneNumber;
+  String get phoneNumber => _phoneNumber ?? '';
+  bool hasPhoneNumber() => _phoneNumber != null;
+
+  // "edited_time" field.
+  DateTime? _editedTime;
+  DateTime? get editedTime => _editedTime;
+  bool hasEditedTime() => _editedTime != null;
+
+  // "bio" field.
+  String? _bio;
+  String get bio => _bio ?? '';
+  bool hasBio() => _bio != null;
+
+  // "user_name" field.
+  String? _userName;
+  String get userName => _userName ?? '';
+  bool hasUserName() => _userName != null;
 
   // "userType" field.
   String? _userType;
@@ -36,9 +66,15 @@ class UsersRecord extends FirestoreRecord {
   bool hasUserType() => _userType != null;
 
   void _initializeFields() {
-    _createdAt = snapshotData['createdAt'] as DateTime?;
     _email = snapshotData['email'] as String?;
-    _name = snapshotData['name'] as String?;
+    _displayName = snapshotData['display_name'] as String?;
+    _photoUrl = snapshotData['photo_url'] as String?;
+    _uid = snapshotData['uid'] as String?;
+    _createdTime = snapshotData['created_time'] as DateTime?;
+    _phoneNumber = snapshotData['phone_number'] as String?;
+    _editedTime = snapshotData['edited_time'] as DateTime?;
+    _bio = snapshotData['bio'] as String?;
+    _userName = snapshotData['user_name'] as String?;
     _userType = snapshotData['userType'] as String?;
   }
 
@@ -76,16 +112,28 @@ class UsersRecord extends FirestoreRecord {
 }
 
 Map<String, dynamic> createUsersRecordData({
-  DateTime? createdAt,
   String? email,
-  String? name,
+  String? displayName,
+  String? photoUrl,
+  String? uid,
+  DateTime? createdTime,
+  String? phoneNumber,
+  DateTime? editedTime,
+  String? bio,
+  String? userName,
   String? userType,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
-      'createdAt': createdAt,
       'email': email,
-      'name': name,
+      'display_name': displayName,
+      'photo_url': photoUrl,
+      'uid': uid,
+      'created_time': createdTime,
+      'phone_number': phoneNumber,
+      'edited_time': editedTime,
+      'bio': bio,
+      'user_name': userName,
       'userType': userType,
     }.withoutNulls,
   );
@@ -98,15 +146,31 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
 
   @override
   bool equals(UsersRecord? e1, UsersRecord? e2) {
-    return e1?.createdAt == e2?.createdAt &&
-        e1?.email == e2?.email &&
-        e1?.name == e2?.name &&
+    return e1?.email == e2?.email &&
+        e1?.displayName == e2?.displayName &&
+        e1?.photoUrl == e2?.photoUrl &&
+        e1?.uid == e2?.uid &&
+        e1?.createdTime == e2?.createdTime &&
+        e1?.phoneNumber == e2?.phoneNumber &&
+        e1?.editedTime == e2?.editedTime &&
+        e1?.bio == e2?.bio &&
+        e1?.userName == e2?.userName &&
         e1?.userType == e2?.userType;
   }
 
   @override
-  int hash(UsersRecord? e) =>
-      const ListEquality().hash([e?.createdAt, e?.email, e?.name, e?.userType]);
+  int hash(UsersRecord? e) => const ListEquality().hash([
+        e?.email,
+        e?.displayName,
+        e?.photoUrl,
+        e?.uid,
+        e?.createdTime,
+        e?.phoneNumber,
+        e?.editedTime,
+        e?.bio,
+        e?.userName,
+        e?.userType
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is UsersRecord;

@@ -29,3 +29,4 @@ export '/pagperfilartesao/pagperfilartesao_widget.dart'
     show PagperfilartesaoWidget;
 export '/pagechat/pagechat_widget.dart' show PagechatWidget;
 export '/pagefavoritos/pagefavoritos_widget.dart' show PagefavoritosWidget;
+export '/pageperfil/pageperfil_widget.dart' show PageperfilWidget;
