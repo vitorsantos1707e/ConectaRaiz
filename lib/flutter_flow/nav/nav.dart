@@ -166,6 +166,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: PagperfilartesaoWidget.routeName,
           path: PagperfilartesaoWidget.routePath,
           builder: (context, params) => PagperfilartesaoWidget(),
+        ),
+        FFRoute(
+          name: PagechatWidget.routeName,
+          path: PagechatWidget.routePath,
+          builder: (context, params) => PagechatWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

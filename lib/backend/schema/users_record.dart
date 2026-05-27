@@ -15,31 +15,31 @@ class UsersRecord extends FirestoreRecord {
     _initializeFields();
   }
 
-  // "name" field.
-  String? _name;
-  String get name => _name ?? '';
-  bool hasName() => _name != null;
+  // "createdAt" field.
+  DateTime? _createdAt;
+  DateTime? get createdAt => _createdAt;
+  bool hasCreatedAt() => _createdAt != null;
 
   // "email" field.
   String? _email;
   String get email => _email ?? '';
   bool hasEmail() => _email != null;
 
+  // "name" field.
+  String? _name;
+  String get name => _name ?? '';
+  bool hasName() => _name != null;
+
   // "userType" field.
   String? _userType;
   String get userType => _userType ?? '';
   bool hasUserType() => _userType != null;
 
-  // "createdAt" field.
-  DateTime? _createdAt;
-  DateTime? get createdAt => _createdAt;
-  bool hasCreatedAt() => _createdAt != null;
-
   void _initializeFields() {
-    _name = snapshotData['name'] as String?;
-    _email = snapshotData['email'] as String?;
-    _userType = snapshotData['userType'] as String?;
     _createdAt = snapshotData['createdAt'] as DateTime?;
+    _email = snapshotData['email'] as String?;
+    _name = snapshotData['name'] as String?;
+    _userType = snapshotData['userType'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -76,17 +76,17 @@ class UsersRecord extends FirestoreRecord {
 }
 
 Map<String, dynamic> createUsersRecordData({
-  String? name,
-  String? email,
-  String? userType,
   DateTime? createdAt,
+  String? email,
+  String? name,
+  String? userType,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
-      'name': name,
-      'email': email,
-      'userType': userType,
       'createdAt': createdAt,
+      'email': email,
+      'name': name,
+      'userType': userType,
     }.withoutNulls,
   );
 
@@ -98,15 +98,15 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
 
   @override
   bool equals(UsersRecord? e1, UsersRecord? e2) {
-    return e1?.name == e2?.name &&
+    return e1?.createdAt == e2?.createdAt &&
         e1?.email == e2?.email &&
-        e1?.userType == e2?.userType &&
-        e1?.createdAt == e2?.createdAt;
+        e1?.name == e2?.name &&
+        e1?.userType == e2?.userType;
   }
 
   @override
   int hash(UsersRecord? e) =>
-      const ListEquality().hash([e?.name, e?.email, e?.userType, e?.createdAt]);
+      const ListEquality().hash([e?.createdAt, e?.email, e?.name, e?.userType]);
 
   @override
   bool isValidKey(Object? o) => o is UsersRecord;

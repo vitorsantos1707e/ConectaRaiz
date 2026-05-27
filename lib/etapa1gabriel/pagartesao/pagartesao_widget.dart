@@ -59,9 +59,9 @@ class _PagartesaoWidgetState extends State<PagartesaoWidget> {
 
       await UsersRecord.collection.doc(user.uid).update({
         ...createUsersRecordData(
-          name: _model.textController1.text,
           email: _model.emailTextController.text,
           userType: 'fornecedor',
+          name: _model.textController1.text,
         ),
         ...mapToFirestore(
           {
@@ -1124,9 +1124,9 @@ class _PagartesaoWidgetState extends State<PagartesaoWidget> {
 
                             await UsersRecord.collection.doc(user.uid).update({
                               ...createUsersRecordData(
-                                name: _model.textController1.text,
                                 email: _model.emailTextController.text,
                                 userType: 'fornecedor',
+                                name: _model.textController1.text,
                               ),
                               ...mapToFirestore(
                                 {

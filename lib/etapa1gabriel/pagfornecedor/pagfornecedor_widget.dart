@@ -1083,9 +1083,9 @@ class _PagfornecedorWidgetState extends State<PagfornecedorWidget> {
 
                             await UsersRecord.collection.doc(user.uid).update({
                               ...createUsersRecordData(
-                                name: _model.textController1.text,
                                 email: _model.emailTextController.text,
                                 userType: 'fornecedor',
+                                name: _model.textController1.text,
                               ),
                               ...mapToFirestore(
                                 {

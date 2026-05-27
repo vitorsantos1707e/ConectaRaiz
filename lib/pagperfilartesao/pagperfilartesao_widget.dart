@@ -1263,8 +1263,8 @@ class _PagperfilartesaoWidgetState extends State<PagperfilartesaoWidget> {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                   child: FFButtonWidget(
-                    onPressed: () {
-                      print('Button pressed ...');
+                    onPressed: () async {
+                      context.pushNamed(PagechatWidget.routeName);
                     },
                     text: 'Conversar',
                     icon: Icon(

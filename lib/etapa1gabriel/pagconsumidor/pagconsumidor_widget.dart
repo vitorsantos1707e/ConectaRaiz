@@ -59,9 +59,9 @@ class _PagconsumidorWidgetState extends State<PagconsumidorWidget> {
 
       await UsersRecord.collection.doc(user.uid).update({
         ...createUsersRecordData(
-          name: _model.textController1.text,
           email: _model.emailTextController.text,
           userType: 'fornecedor',
+          name: _model.textController1.text,
         ),
         ...mapToFirestore(
           {
@@ -407,9 +407,9 @@ class _PagconsumidorWidgetState extends State<PagconsumidorWidget> {
                                         .doc(user.uid)
                                         .update({
                                       ...createUsersRecordData(
-                                        name: _model.textController1.text,
                                         email: _model.emailTextController.text,
                                         userType: 'fornecedor',
+                                        name: _model.textController1.text,
                                       ),
                                       ...mapToFirestore(
                                         {
@@ -1054,9 +1054,9 @@ class _PagconsumidorWidgetState extends State<PagconsumidorWidget> {
 
                             await UsersRecord.collection.doc(user.uid).update({
                               ...createUsersRecordData(
-                                name: _model.textController1.text,
                                 email: _model.emailTextController.text,
                                 userType: 'fornecedor',
+                                name: _model.textController1.text,
                               ),
                               ...mapToFirestore(
                                 {
