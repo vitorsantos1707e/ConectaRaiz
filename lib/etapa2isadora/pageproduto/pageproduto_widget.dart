@@ -250,8 +250,18 @@ class _PageprodutoWidgetState extends State<PageprodutoWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               FFButtonWidget(
-                                onPressed: () {
-                                  print('Button pressed ...');
+                                onPressed: () async {
+                                  FFAppState().cartName =
+                                      'Bolsa de Crochê Bege';
+                                  FFAppState().cartImage =
+                                      'https://ibb.co/VW3McCNF';
+                                  FFAppState().cartPrice = 89.90;
+                                  FFAppState().cartQuantity = 1;
+                                  FFAppState().hasCartItem = true;
+                                  safeSetState(() {});
+
+                                  context
+                                      .pushNamed(PagecarrinhoWidget.routeName);
                                 },
                                 text: 'Comprar',
                                 options: FFButtonOptions(

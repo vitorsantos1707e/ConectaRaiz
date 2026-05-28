@@ -121,9 +121,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: CategoriacrocheWidget.routeName,
           path: CategoriacrocheWidget.routePath,
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'categoriacroche')
-              : CategoriacrocheWidget(),
+          builder: (context, params) => CategoriacrocheWidget(),
         ),
         FFRoute(
           name: CategoriaceramicaWidget.routeName,
@@ -185,6 +183,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'pageperfil')
               : PageperfilWidget(),
+        ),
+        FFRoute(
+          name: PagecarrinhoWidget.routeName,
+          path: PagecarrinhoWidget.routePath,
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'pagecarrinho')
+              : PagecarrinhoWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

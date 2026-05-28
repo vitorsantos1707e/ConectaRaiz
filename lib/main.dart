@@ -146,10 +146,10 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'homepage': HomepageWidget(),
-      'categoriacroche': CategoriacrocheWidget(),
       'pagmensagens': PagmensagensWidget(),
       'pagefavoritos': PagefavoritosWidget(),
       'pageperfil': PageperfilWidget(),
+      'pagecarrinho': PagecarrinhoWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -179,14 +179,6 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.search_rounded,
-              size: 24.0,
-            ),
-            label: 'Home',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
               Icons.message,
               size: 24.0,
             ),
@@ -204,6 +196,14 @@ class _NavBarPageState extends State<NavBarPage> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.person,
+              size: 24.0,
+            ),
+            label: 'Home',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.shopping_cart,
               size: 24.0,
             ),
             label: 'Home',
