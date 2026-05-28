@@ -1,5 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -35,19 +33,19 @@ class _PagartesaoWidgetState extends State<PagartesaoWidget> {
     _model.textController1 ??= TextEditingController();
     _model.textFieldFocusNode1 ??= FocusNode();
 
-    _model.emailTextController ??= TextEditingController();
+    _model.textController2 ??= TextEditingController();
     _model.textFieldFocusNode2 ??= FocusNode();
 
-    _model.passwordTextController ??= TextEditingController();
+    _model.textController3 ??= TextEditingController();
     _model.textFieldFocusNode3 ??= FocusNode();
 
-    _model.confirmPasswordTextController ??= TextEditingController();
+    _model.textController4 ??= TextEditingController();
     _model.textFieldFocusNode4 ??= FocusNode();
 
-    _model.textController3 ??= TextEditingController();
+    _model.textController5 ??= TextEditingController();
     _model.textFieldFocusNode5 ??= FocusNode();
 
-    _model.textController4 ??= TextEditingController();
+    _model.textController6 ??= TextEditingController();
     _model.textFieldFocusNode6 ??= FocusNode();
   }
 
@@ -339,7 +337,7 @@ class _PagartesaoWidgetState extends State<PagartesaoWidget> {
                               child: Container(
                                 width: 200.0,
                                 child: TextFormField(
-                                  controller: _model.emailTextController,
+                                  controller: _model.textController2,
                                   focusNode: _model.textFieldFocusNode2,
                                   autofocus: false,
                                   enabled: true,
@@ -453,7 +451,7 @@ class _PagartesaoWidgetState extends State<PagartesaoWidget> {
                                   cursorColor:
                                       FlutterFlowTheme.of(context).primaryText,
                                   enableInteractiveSelection: true,
-                                  validator: _model.emailTextControllerValidator
+                                  validator: _model.textController2Validator
                                       .asValidator(context),
                                 ),
                               ),
@@ -469,7 +467,7 @@ class _PagartesaoWidgetState extends State<PagartesaoWidget> {
                               child: Container(
                                 width: 200.0,
                                 child: TextFormField(
-                                  controller: _model.passwordTextController,
+                                  controller: _model.textController3,
                                   focusNode: _model.textFieldFocusNode3,
                                   autofocus: false,
                                   enabled: true,
@@ -597,8 +595,7 @@ class _PagartesaoWidgetState extends State<PagartesaoWidget> {
                                   cursorColor:
                                       FlutterFlowTheme.of(context).primaryText,
                                   enableInteractiveSelection: true,
-                                  validator: _model
-                                      .passwordTextControllerValidator
+                                  validator: _model.textController3Validator
                                       .asValidator(context),
                                 ),
                               ),
@@ -614,8 +611,7 @@ class _PagartesaoWidgetState extends State<PagartesaoWidget> {
                               child: Container(
                                 width: 200.0,
                                 child: TextFormField(
-                                  controller:
-                                      _model.confirmPasswordTextController,
+                                  controller: _model.textController4,
                                   focusNode: _model.textFieldFocusNode4,
                                   autofocus: false,
                                   enabled: true,
@@ -743,8 +739,7 @@ class _PagartesaoWidgetState extends State<PagartesaoWidget> {
                                   cursorColor:
                                       FlutterFlowTheme.of(context).primaryText,
                                   enableInteractiveSelection: true,
-                                  validator: _model
-                                      .confirmPasswordTextControllerValidator
+                                  validator: _model.textController4Validator
                                       .asValidator(context),
                                 ),
                               ),
@@ -786,7 +781,7 @@ class _PagartesaoWidgetState extends State<PagartesaoWidget> {
                         Container(
                           width: 328.0,
                           child: TextFormField(
-                            controller: _model.textController3,
+                            controller: _model.textController5,
                             focusNode: _model.textFieldFocusNode5,
                             autofocus: false,
                             enabled: true,
@@ -890,14 +885,14 @@ class _PagartesaoWidgetState extends State<PagartesaoWidget> {
                             cursorColor:
                                 FlutterFlowTheme.of(context).primaryText,
                             enableInteractiveSelection: true,
-                            validator: _model.textController3Validator
+                            validator: _model.textController5Validator
                                 .asValidator(context),
                           ),
                         ),
                         Container(
                           width: 328.0,
                           child: TextFormField(
-                            controller: _model.textController4,
+                            controller: _model.textController6,
                             focusNode: _model.textFieldFocusNode6,
                             autofocus: false,
                             enabled: true,
@@ -1001,7 +996,7 @@ class _PagartesaoWidgetState extends State<PagartesaoWidget> {
                             cursorColor:
                                 FlutterFlowTheme.of(context).primaryText,
                             enableInteractiveSelection: true,
-                            validator: _model.textController4Validator
+                            validator: _model.textController6Validator
                                 .asValidator(context),
                           ),
                         ),
@@ -1058,46 +1053,9 @@ class _PagartesaoWidgetState extends State<PagartesaoWidget> {
                         ),
                         FFButtonWidget(
                           onPressed: () async {
-                            GoRouter.of(context).prepareAuthEvent();
-                            if (_model.passwordTextController.text !=
-                                _model.confirmPasswordTextController.text) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    'Passwords don\'t match!',
-                                  ),
-                                ),
-                              );
-                              return;
-                            }
-
-                            final user =
-                                await authManager.createAccountWithEmail(
-                              context,
-                              _model.emailTextController.text,
-                              _model.passwordTextController.text,
-                            );
-                            if (user == null) {
-                              return;
-                            }
-
-                            await UsersRecord.collection.doc(user.uid).update({
-                              ...createUsersRecordData(
-                                email: _model.emailTextController.text,
-                                displayName: _model.textController1.text,
-                                userType: 'fornecedor',
-                              ),
-                              ...mapToFirestore(
-                                {
-                                  'created_time': FieldValue.serverTimestamp(),
-                                },
-                              ),
-                            });
-
-                            context.pushNamedAuth(
-                                HomepageWidget.routeName, context.mounted);
+                            context.pushNamed(HomepageWidget.routeName);
                           },
-                          text: 'Criar Conta',
+                          text: 'Criar conta',
                           options: FFButtonOptions(
                             width: double.infinity,
                             height: 40.0,
@@ -1110,14 +1068,18 @@ class _PagartesaoWidgetState extends State<PagartesaoWidget> {
                                 .titleSmall
                                 .override(
                                   font: GoogleFonts.interTight(
-                                    fontWeight: FontWeight.w600,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontWeight,
                                     fontStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .fontStyle,
                                   ),
                                   color: Colors.white,
                                   letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w600,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontWeight,
                                   fontStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .fontStyle,

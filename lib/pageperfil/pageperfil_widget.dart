@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
@@ -126,14 +127,9 @@ class _PageperfilWidgetState extends State<PageperfilWidget> {
                           ),
                         ),
                       ),
-                      InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {},
-                        child: Text(
-                          'João Silva',
+                      AuthUserStreamWidget(
+                        builder: (context) => Text(
+                          currentUserDisplayName,
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     font: GoogleFonts.poppins(
@@ -153,7 +149,7 @@ class _PageperfilWidgetState extends State<PageperfilWidget> {
                         ),
                       ),
                       Text(
-                        '@joaosilva',
+                        currentUserEmail,
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               font: GoogleFonts.poppins(
                                 fontWeight: FontWeight.bold,
@@ -228,7 +224,7 @@ class _PageperfilWidgetState extends State<PageperfilWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 0.0),
                 child: Container(
                   width: double.infinity,
-                  height: 276.69,
+                  height: 212.91,
                   decoration: BoxDecoration(
                     color: Color(0xFFF6F3ED),
                     boxShadow: [
@@ -301,95 +297,7 @@ class _PageperfilWidgetState extends State<PageperfilWidget> {
                                         ),
                                   ),
                                   Text(
-                                    'joaosilva@gmail.com',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          font: GoogleFonts.poppins(
-                                            fontWeight: FontWeight.w600,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
-                                          ),
-                                          color: Color(0xFF324B20),
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w600,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
-                                        ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 5.0, 0.0, 0.0),
-                                    child: Container(
-                                      width: 280.0,
-                                      height: 2.0,
-                                      decoration: BoxDecoration(
-                                        color: Color(0xFFA9A7A7),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            10.0, 15.0, 0.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Container(
-                              width: 50.0,
-                              height: 50.0,
-                              decoration: BoxDecoration(
-                                color: Color(0xFFF5EFE6),
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                  color: Color(0xFF9F9F9F),
-                                ),
-                              ),
-                              child: Icon(
-                                Icons.phone,
-                                color: Color(0xFF324B20),
-                                size: 24.0,
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  5.0, 0.0, 0.0, 0.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Telefone',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          font: GoogleFonts.poppins(
-                                            fontWeight: FontWeight.w600,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
-                                          ),
-                                          color: Color(0xFF324B20),
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w600,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
-                                        ),
-                                  ),
-                                  Text(
-                                    '(11) 99857-0938',
+                                    currentUserEmail,
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -476,26 +384,29 @@ class _PageperfilWidgetState extends State<PageperfilWidget> {
                                                   .fontStyle,
                                         ),
                                   ),
-                                  Text(
-                                    'Consumidor',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          font: GoogleFonts.poppins(
+                                  AuthUserStreamWidget(
+                                    builder: (context) => Text(
+                                      valueOrDefault(
+                                          currentUserDocument?.userType, ''),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            font: GoogleFonts.poppins(
+                                              fontWeight: FontWeight.w600,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
+                                            color: Color(0xFF324B20),
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.w600,
                                             fontStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
-                                          color: Color(0xFF324B20),
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w600,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
-                                        ),
+                                    ),
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
@@ -567,26 +478,32 @@ class _PageperfilWidgetState extends State<PageperfilWidget> {
                                                       .fontStyle,
                                             ),
                                       ),
-                                      Text(
-                                        'maio',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              font: GoogleFonts.inter(
+                                      AuthUserStreamWidget(
+                                        builder: (context) => Text(
+                                          dateTimeFormat(
+                                              "yMMMd",
+                                              currentUserDocument!
+                                                  .createdTime!),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                font: GoogleFonts.inter(
+                                                  fontWeight: FontWeight.w600,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
+                                                color: Color(0xFF324B20),
+                                                letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
                                                 fontStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF324B20),
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.w600,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontStyle,
-                                            ),
+                                        ),
                                       ),
                                     ],
                                   ),

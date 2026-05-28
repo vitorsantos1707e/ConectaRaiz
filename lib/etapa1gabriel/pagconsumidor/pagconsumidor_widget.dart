@@ -971,7 +971,7 @@ class _PagconsumidorWidgetState extends State<PagconsumidorWidget> {
                               ...createUsersRecordData(
                                 email: _model.emailTextController.text,
                                 displayName: _model.textController1.text,
-                                userType: 'fornecedor',
+                                userType: 'Consumidor',
                               ),
                               ...mapToFirestore(
                                 {
@@ -996,14 +996,18 @@ class _PagconsumidorWidgetState extends State<PagconsumidorWidget> {
                                 .titleSmall
                                 .override(
                                   font: GoogleFonts.interTight(
-                                    fontWeight: FontWeight.w600,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontWeight,
                                     fontStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .fontStyle,
                                   ),
                                   color: Colors.white,
                                   letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w600,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontWeight,
                                   fontStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .fontStyle,
