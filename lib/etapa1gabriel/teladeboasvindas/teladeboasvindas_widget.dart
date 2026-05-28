@@ -26,6 +26,8 @@ class _TeladeboasvindasWidgetState extends State<TeladeboasvindasWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => TeladeboasvindasModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

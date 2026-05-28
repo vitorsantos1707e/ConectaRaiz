@@ -46,6 +46,8 @@ class _PagconsumidorWidgetState extends State<PagconsumidorWidget> {
 
     _model.textController3 ??= TextEditingController();
     _model.textFieldFocusNode5 ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

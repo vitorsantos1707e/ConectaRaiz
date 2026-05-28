@@ -26,6 +26,8 @@ class _PageperfilWidgetState extends State<PageperfilWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PageperfilModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -129,7 +131,10 @@ class _PageperfilWidgetState extends State<PageperfilWidget> {
                       ),
                       AuthUserStreamWidget(
                         builder: (context) => Text(
-                          currentUserDisplayName,
+                          valueOrDefault<String>(
+                            currentUserDisplayName,
+                            'Vitor Santos',
+                          ),
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     font: GoogleFonts.poppins(
@@ -149,7 +154,10 @@ class _PageperfilWidgetState extends State<PageperfilWidget> {
                         ),
                       ),
                       Text(
-                        currentUserEmail,
+                        valueOrDefault<String>(
+                          currentUserEmail,
+                          'vitorsantos1707e@gmail.com',
+                        ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               font: GoogleFonts.poppins(
                                 fontWeight: FontWeight.bold,
@@ -297,7 +305,10 @@ class _PageperfilWidgetState extends State<PageperfilWidget> {
                                         ),
                                   ),
                                   Text(
-                                    currentUserEmail,
+                                    valueOrDefault<String>(
+                                      currentUserEmail,
+                                      'vitorsantos1707e@gmail.com',
+                                    ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -386,8 +397,11 @@ class _PageperfilWidgetState extends State<PageperfilWidget> {
                                   ),
                                   AuthUserStreamWidget(
                                     builder: (context) => Text(
-                                      valueOrDefault(
-                                          currentUserDocument?.userType, ''),
+                                      valueOrDefault<String>(
+                                        valueOrDefault(
+                                            currentUserDocument?.userType, ''),
+                                        'Consumidor',
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -480,10 +494,13 @@ class _PageperfilWidgetState extends State<PageperfilWidget> {
                                       ),
                                       AuthUserStreamWidget(
                                         builder: (context) => Text(
-                                          dateTimeFormat(
-                                              "yMMMd",
-                                              currentUserDocument!
-                                                  .createdTime!),
+                                          valueOrDefault<String>(
+                                            dateTimeFormat(
+                                                "yMMMd",
+                                                currentUserDocument
+                                                    ?.createdTime),
+                                            'May, 30, 2026',
+                                          ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
@@ -596,6 +613,7 @@ class _PageperfilWidgetState extends State<PageperfilWidget> {
                                           .bodyMedium
                                           .fontStyle,
                                     ),
+                                    color: Color(0xFF324B20),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                     fontStyle: FlutterFlowTheme.of(context)

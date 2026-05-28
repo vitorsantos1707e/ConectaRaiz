@@ -27,6 +27,8 @@ class _PageprodutoWidgetState extends State<PageprodutoWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PageprodutoModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -300,7 +302,7 @@ class _PageprodutoWidgetState extends State<PageprodutoWidget> {
                               FFButtonWidget(
                                 onPressed: () async {
                                   await launchURL(
-                                      'https://arvr.google.com/scene-viewer/1.0?file=https://files.catbox.moe/ahm9bz.glb&mode=ar_preferred');
+                                      'https://elegant-duckanoo-ddeaad.netlify.app/');
                                 },
                                 text: 'Visualize em RA',
                                 options: FFButtonOptions(

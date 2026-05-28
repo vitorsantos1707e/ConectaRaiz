@@ -28,6 +28,8 @@ class _PagdeescolhasdeperfisWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => PagdeescolhasdeperfisModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

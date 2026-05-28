@@ -26,6 +26,8 @@ class _PagefavoritosWidgetState extends State<PagefavoritosWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PagefavoritosModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

@@ -27,6 +27,8 @@ class _PagperfilartesaoWidgetState extends State<PagperfilartesaoWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PagperfilartesaoModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

@@ -26,6 +26,8 @@ class _PagecarrinhoWidgetState extends State<PagecarrinhoWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PagecarrinhoModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

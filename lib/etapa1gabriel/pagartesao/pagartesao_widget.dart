@@ -47,6 +47,8 @@ class _PagartesaoWidgetState extends State<PagartesaoWidget> {
 
     _model.textController6 ??= TextEditingController();
     _model.textFieldFocusNode6 ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -122,7 +124,7 @@ class _PagartesaoWidgetState extends State<PagartesaoWidget> {
                             ),
                       ),
                       TextSpan(
-                        text: 'de Empreendedor',
+                        text: 'de Artesão',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               font: GoogleFonts.poppins(
                                 fontWeight: FontWeight.bold,

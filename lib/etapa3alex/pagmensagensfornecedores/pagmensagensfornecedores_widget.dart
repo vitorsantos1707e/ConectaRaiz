@@ -31,6 +31,8 @@ class _PagmensagensfornecedoresWidgetState
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -287,115 +289,20 @@ class _PagmensagensfornecedoresWidgetState
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 25.0, 0.0),
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              context.pushNamed(PagmensagensWidget.routeName);
-                            },
-                            text: 'Todas',
-                            options: FFButtonOptions(
-                              width: 60.8,
-                              height: 40.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  16.0, 0.0, 16.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: Color(0xFFF5EFE6),
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    font: GoogleFonts.interTight(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontStyle,
-                                    ),
-                                    color: Color(0xFF6D4129),
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontStyle,
-                                  ),
-                              elevation: 0.0,
-                              borderSide: BorderSide(
-                                color: Color(0xFFABABAB),
-                              ),
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 25.0, 0.0),
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              context.pushNamed(
-                                  PagmensagensartesaoWidget.routeName);
-                            },
-                            text: 'Artesãos',
-                            options: FFButtonOptions(
-                              width: 16.4,
-                              height: 40.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  16.0, 0.0, 16.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: Color(0xFFF5EFE6),
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    font: GoogleFonts.interTight(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontStyle,
-                                    ),
-                                    color: Color(0xFF6D4129),
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontStyle,
-                                  ),
-                              elevation: 0.0,
-                              borderSide: BorderSide(
-                                color: Color(0xFFABABAB),
-                              ),
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                          ),
-                        ),
-                        FFButtonWidget(
-                          onPressed: () async {
-                            context.pushNamed(
-                                PagmensagensfornecedoresWidget.routeName);
-                          },
-                          text: 'Fornecedores',
-                          options: FFButtonOptions(
-                            width: 16.4,
-                            height: 40.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                16.0, 0.0, 16.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: Color(0xFF324B20),
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
+                    FFButtonWidget(
+                      onPressed: () async {
+                        context.pushNamed(PagmensagensWidget.routeName);
+                      },
+                      text: 'Todos',
+                      options: FFButtonOptions(
+                        height: 40.0,
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            16.0, 0.0, 16.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: Color(0xFFF5EFE6),
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
                                   font: GoogleFonts.interTight(
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .titleSmall
@@ -404,8 +311,7 @@ class _PagmensagensfornecedoresWidgetState
                                         .titleSmall
                                         .fontStyle,
                                   ),
-                                  color: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
+                                  color: Color(0xFF324B20),
                                   letterSpacing: 0.0,
                                   fontWeight: FlutterFlowTheme.of(context)
                                       .titleSmall
@@ -414,11 +320,89 @@ class _PagmensagensfornecedoresWidgetState
                                       .titleSmall
                                       .fontStyle,
                                 ),
-                            elevation: 0.0,
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
+                        elevation: 0.0,
+                        borderSide: BorderSide(
+                          color: Color(0xFF949393),
                         ),
-                      ],
+                        borderRadius: BorderRadius.circular(22.0),
+                      ),
+                    ),
+                    FFButtonWidget(
+                      onPressed: () async {
+                        context.pushNamed(PagmensagensartesaoWidget.routeName);
+                      },
+                      text: 'Artesão',
+                      options: FFButtonOptions(
+                        height: 40.0,
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            16.0, 0.0, 16.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: Color(0xFFF5EFE6),
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
+                                  color: Color(0xFF324B20),
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
+                                ),
+                        elevation: 0.0,
+                        borderSide: BorderSide(
+                          color: Color(0xFF949393),
+                        ),
+                        borderRadius: BorderRadius.circular(22.0),
+                      ),
+                    ),
+                    FFButtonWidget(
+                      onPressed: () async {
+                        context.pushNamed(
+                            PagmensagensfornecedoresWidget.routeName);
+                      },
+                      text: 'Fornecedores',
+                      options: FFButtonOptions(
+                        height: 40.0,
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            16.0, 0.0, 16.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: Color(0xFF324B20),
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
+                                  color: Color(0xFFF5EFE6),
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
+                                ),
+                        elevation: 0.0,
+                        borderSide: BorderSide(
+                          color: Color(0xFF949393),
+                        ),
+                        borderRadius: BorderRadius.circular(22.0),
+                      ),
                     ),
                   ].divide(SizedBox(width: 20.0)),
                 ),
